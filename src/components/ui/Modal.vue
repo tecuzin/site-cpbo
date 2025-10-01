@@ -6,7 +6,7 @@
           <h2 class="modal-title">
             <slot name="title">{{ title }}</slot>
           </h2>
-          <button class="modal-close" @click="$emit('close')" aria-label="Fermer">
+          <button class="modal-close" @click="handleClose" aria-label="Fermer">
             ×
           </button>
         </div>
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { watch, onBeforeUnmount } from 'vue'
+
 export default {
   name: 'Modal',
   props: {
@@ -39,24 +41,34 @@ export default {
     }
   },
   emits: ['close'],
-  methods: {
-    handleOverlayClick() {
-      if (this.closeOnOverlay) {
-        this.$emit('close')
+  setup(props, { emit }) {
+    const handleOverlayClick = () => {
+      if (props.closeOnOverlay) {
+        emit('close')
       }
     }
-  },
-  watch: {
-    isOpen(newValue) {
+
+    const handleClose = () => {
+      emit('close')
+    }
+
+    // Gestion du scroll du body
+    watch(() => props.isOpen, (newValue) => {
       if (newValue) {
         document.body.style.overflow = 'hidden'
       } else {
         document.body.style.overflow = ''
       }
+    })
+
+    onBeforeUnmount(() => {
+      document.body.style.overflow = ''
+    })
+
+    return {
+      handleOverlayClick,
+      handleClose
     }
-  },
-  beforeUnmount() {
-    document.body.style.overflow = ''
   }
 }
 </script>

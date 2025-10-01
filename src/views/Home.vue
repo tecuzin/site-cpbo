@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import Hero from '../components/sections/Hero.vue'
 import EventCard from '../components/sections/EventCard.vue'
 import ContactModal from '../components/sections/ContactModal.vue'
@@ -111,16 +112,18 @@ export default {
     EventCard,
     ContactModal
   },
-  data() {
-    return {
-      showContactModal: false
-    }
-  },
-  methods: {
-    handleHeroButtonClick(button) {
+  setup() {
+    const showContactModal = ref(false)
+
+    const handleHeroButtonClick = (button) => {
       if (button.action === 'contact') {
-        this.showContactModal = true
+        showContactModal.value = true
       }
+    }
+
+    return {
+      showContactModal,
+      handleHeroButtonClick
     }
   }
 }

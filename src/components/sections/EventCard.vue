@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import Card from '../ui/Card.vue'
 
 export default {
@@ -55,16 +56,22 @@ export default {
       default: () => []
     }
   },
-  computed: {
-    day() {
-      if (!this.date) return ''
-      const d = new Date(this.date)
+  setup(props) {
+    const day = computed(() => {
+      if (!props.date) return ''
+      const d = new Date(props.date)
       return d.getDate()
-    },
-    month() {
-      if (!this.date) return ''
-      const d = new Date(this.date)
+    })
+
+    const month = computed(() => {
+      if (!props.date) return ''
+      const d = new Date(props.date)
       return d.toLocaleDateString('fr-FR', { month: 'short' }).toUpperCase()
+    })
+
+    return {
+      day,
+      month
     }
   }
 }

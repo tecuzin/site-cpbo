@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+
 export default {
   name: 'Card',
   props: {
@@ -19,13 +21,15 @@ export default {
       validator: (value) => ['small', 'medium', 'large', 'none'].includes(value)
     }
   },
-  computed: {
-    cardClasses() {
-      return [
-        'card',
-        `card-${this.variant}`,
-        `card-padding-${this.padding}`
-      ]
+  setup(props) {
+    const cardClasses = computed(() => [
+      'card',
+      `card-${props.variant}`,
+      `card-padding-${props.padding}`
+    ])
+
+    return {
+      cardClasses
     }
   }
 }

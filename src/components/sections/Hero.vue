@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import Button from '../ui/Button.vue'
 
 export default {
@@ -48,14 +49,18 @@ export default {
     }
   },
   emits: ['button-click'],
-  computed: {
-    showButton() {
-      return this.primaryButton || this.secondaryButton
+  setup(props, { emit }) {
+    const showButton = computed(() => {
+      return props.primaryButton || props.secondaryButton
+    })
+
+    const handleButtonClick = (button) => {
+      emit('button-click', button)
     }
-  },
-  methods: {
-    handleButtonClick(button) {
-      this.$emit('button-click', button)
+
+    return {
+      showButton,
+      handleButtonClick
     }
   }
 }

@@ -72,7 +72,7 @@
       <Button 
         type="button" 
         variant="outline" 
-        @click="$emit('cancel')"
+        @click="handleCancel"
         :disabled="isSubmitting"
       >
         Annuler
@@ -93,6 +93,7 @@
 </template>
 
 <script>
+import { ref, reactive } from 'vue'
 import Button from './Button.vue'
 
 export default {
@@ -107,100 +108,58 @@ export default {
     }
   },
   emits: ['submit', 'cancel', 'success', 'error'],
-  data() {
-    return {
-      form: {
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      },
-      errors: {},
-      isSubmitting: false,
-      submitStatus: null
-    }
-  },
-  methods: {
-    validateForm() {
-      this.errors = {}
-      
-      if (!this.form.name.trim()) {
-        this.errors.name = 'Le nom est requis'
-      }
-      
-      if (!this.form.email.trim()) {
-        this.errors.email = 'L\'email est requis'
-      } else if (!this.isValidEmail(this.form.email)) {
-        this.errors.email = 'L\'email n\'est pas valide'
-      }
-      
-      if (this.form.phone && !this.isValidPhone(this.form.phone)) {
-        this.errors.phone = 'Le numéro de téléphone n\'est pas valide'
-      }
-      
-      if (!this.form.subject) {
-        this.errors.subject = 'Le sujet est requis'
-      }
-      
-      if (!this.form.message.trim()) {
-        this.errors.message = 'Le message est requis'
-      }
-      
-      return Object.keys(this.errors).length === 0
-    },
+  setup(props, { emit }) {
+    const form = reactive({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    })
     
-    isValidEmail(email) {
+    const errors = ref({})
+    const isSubmitting = ref(false)
+    const submitStatus = ref(null)
+
+    const isValidEmail = (email) => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       return emailRegex.test(email)
-    },
+    }
     
-    isValidPhone(phone) {
+    const isValidPhone = (phone) => {
       const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/
       return phoneRegex.test(phone.replace(/\s/g, ''))
-    },
-    
-    async handleSubmit() {
-      if (!this.validateForm()) {
-        return
+    }
+
+    const validateForm = () => {
+      errors.value = {}
+      
+      if (!form.name.trim()) {
+        errors.value.name = 'Le nom est requis'
       }
       
-      this.isSubmitting = true
-      this.submitStatus = null
-      
-      try {
-        if (this.onSubmit) {
-          await this.onSubmit(this.form)
-        } else {
-          // Simulation d'envoi par défaut
-          await this.simulateSubmit()
-        }
-        
-        this.submitStatus = {
-          type: 'success',
-          message: 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.'
-        }
-        
-        this.$emit('success', this.form)
-        
-        // Reset du formulaire après succès
-        setTimeout(() => {
-          this.resetForm()
-        }, 2000)
-        
-      } catch (error) {
-        this.submitStatus = {
-          type: 'error',
-          message: error.message || 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.'
-        }
-        
-        this.$emit('error', error)
-      } finally {
-        this.isSubmitting = false
+      if (!form.email.trim()) {
+        errors.value.email = 'L\'email est requis'
+      } else if (!isValidEmail(form.email)) {
+        errors.value.email = 'L\'email n\'est pas valide'
       }
-    },
-    
-    async simulateSubmit() {
+      
+      if (form.phone && !isValidPhone(form.phone)) {
+        errors.value.phone = 'Le numéro de téléphone n\'est pas valide'
+      }
+      
+      if (!form.subject) {
+        errors.value.subject = 'Le sujet est requis'
+      }
+      
+      if (!form.message.trim()) {
+        errors.value.message = 'Le message est requis'
+      }
+      
+      return Object.keys(errors.value).length === 0
+    }
+
+    const simulateSubmit = () => {
       // Simulation d'un appel API
       return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -212,18 +171,71 @@ export default {
           }
         }, 2000)
       })
-    },
-    
-    resetForm() {
-      this.form = {
+    }
+
+    const resetForm = () => {
+      Object.assign(form, {
         name: '',
         email: '',
         phone: '',
         subject: '',
         message: ''
+      })
+      errors.value = {}
+      submitStatus.value = null
+    }
+    
+    const handleSubmit = async () => {
+      if (!validateForm()) {
+        return
       }
-      this.errors = {}
-      this.submitStatus = null
+      
+      isSubmitting.value = true
+      submitStatus.value = null
+      
+      try {
+        if (props.onSubmit) {
+          await props.onSubmit(form)
+        } else {
+          // Simulation d'envoi par défaut
+          await simulateSubmit()
+        }
+        
+        submitStatus.value = {
+          type: 'success',
+          message: 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.'
+        }
+        
+        emit('success', form)
+        
+        // Reset du formulaire après succès
+        setTimeout(() => {
+          resetForm()
+        }, 2000)
+        
+      } catch (error) {
+        submitStatus.value = {
+          type: 'error',
+          message: error.message || 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.'
+        }
+        
+        emit('error', error)
+      } finally {
+        isSubmitting.value = false
+      }
+    }
+
+    const handleCancel = () => {
+      emit('cancel')
+    }
+
+    return {
+      form,
+      errors,
+      isSubmitting,
+      submitStatus,
+      handleSubmit,
+      handleCancel
     }
   }
 }

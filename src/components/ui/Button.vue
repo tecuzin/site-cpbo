@@ -2,13 +2,15 @@
   <button 
     :class="buttonClasses" 
     :disabled="disabled"
-    @click="$emit('click', $event)"
+    @click="handleClick"
   >
     <slot />
   </button>
 </template>
 
 <script>
+import { computed } from 'vue'
+
 export default {
   name: 'Button',
   props: {
@@ -28,14 +30,23 @@ export default {
     }
   },
   emits: ['click'],
-  computed: {
-    buttonClasses() {
-      return [
-        'btn',
-        `btn-${this.variant}`,
-        `btn-${this.size}`,
-        { 'btn-disabled': this.disabled }
-      ]
+  setup(props, { emit }) {
+    const buttonClasses = computed(() => [
+      'btn',
+      `btn-${props.variant}`,
+      `btn-${props.size}`,
+      { 'btn-disabled': props.disabled }
+    ])
+
+    const handleClick = (event) => {
+      if (!props.disabled) {
+        emit('click', event)
+      }
+    }
+
+    return {
+      buttonClasses,
+      handleClick
     }
   }
 }
