@@ -32,22 +32,22 @@
       </section>
 
       <section class="card">
-        <h2>Nos entraîneurs</h2>
+        <h2>Notre bureau</h2>
         <div class="grid">
           <div>
             <h3>Jean Dupont</h3>
-            <p><strong>Entraîneur principal</strong></p>
-            <p>Diplômé d'État, 15 ans d'expérience. Spécialisé dans l'entraînement des coureurs de fond.</p>
+            <p><strong>Président</strong></p>
+            <p>Coureur expérimenté, 15 ans d'expérience. Responsable de la gestion du club et des relations extérieures.</p>
           </div>
           <div>
             <h3>Marie Martin</h3>
-            <p><strong>Entraîneure adjointe</strong></p>
-            <p>Ancienne athlète de haut niveau, spécialisée dans l'entraînement des débutants.</p>
+            <p><strong>Secrétaire</strong></p>
+            <p>Ancienne athlète de haut niveau, gère l'administration et l'accueil des nouveaux membres.</p>
           </div>
           <div>
             <h3>Pierre Durand</h3>
-            <p><strong>Coach trail</strong></p>
-            <p>Spécialiste du trail et de la course nature. Organise les sorties en forêt.</p>
+            <p><strong>Trésorier</strong></p>
+            <p>Spécialiste du trail et de la course nature. Gère les finances et organise les sorties en forêt.</p>
           </div>
         </div>
       </section>

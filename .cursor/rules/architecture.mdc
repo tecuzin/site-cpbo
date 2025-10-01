@@ -1,0 +1,71 @@
+# Architecture Decision Record - CPBO (Club de Course à Pied Beauvais Oise)
+
+## Contexte
+- Site web associatif pour un club de course à pied
+- Stack technique : Node.js, Vue.js 3, Docker
+- Besoin d'une application maintenable, testable et évolutive
+
+## Décisions techniques
+
+### Frontend (Vue.js 3)
+- Utilisation de la Composition API
+- Tests unitaires avec Vitest
+- Tests de composants avec Vue Test Utils
+- Tests E2E avec Playwright
+- Composants atomiques réutilisables
+- Style : CSS avec variables CSS
+- Responsive design mobile-first
+
+### Architecture des composants
+- Components/
+  - ui/ (boutons, inputs, cards, modales...)
+  - sections/ (hero, event cards, contact modal...)
+  - layout/ (header, footer, navigation...)
+- Views/ (pages principales)
+- Router/ (Vue Router)
+- Assets/ (styles, images...)
+- Tests/ (unitaires et E2E)
+
+### Bonnes pratiques
+- Tests unitaires obligatoires (>80% coverage)
+- Tests E2E pour les fonctionnalités critiques
+- Code review systématique
+- Conventional commits
+- ESLint + Prettier
+- Architecture modulaire et testable
+
+### CI/CD
+- Docker pour le développement
+- Tests automatisés
+- Build optimisé
+- Déploiement containerisé
+
+### Docker
+- Image Node.js 20 Alpine
+- Volumes pour persistance
+- Hot reload pour le développement
+- Port 3000 exposé
+
+### Sécurité
+- Dépendances à jour
+- Validation des données côté client
+- Protection XSS
+- Validation des formulaires
+
+### Performance
+- Lazy loading des routes
+- Optimisation des assets
+- Caching approprié
+- Minification en production
+
+### Accessibilité
+- Standards WCAG 2.1
+- Support lecteurs d'écran
+- Navigation clavier
+- Contraste approprié
+
+## Évolutions futures
+- PWA pour notifications
+- Système de paiement
+- Espace membres
+- Intégration réseaux sociaux

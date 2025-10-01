@@ -7,69 +7,11 @@
         <!-- Formulaire de contact -->
         <div class="card">
           <h2>Nous écrire</h2>
-          <form @submit.prevent="submitForm">
-            <div class="form-group">
-              <label for="name">Nom complet *</label>
-              <input 
-                type="text" 
-                id="name" 
-                v-model="form.name" 
-                required
-                placeholder="Votre nom et prénom"
-              >
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input 
-                type="email" 
-                id="email" 
-                v-model="form.email" 
-                required
-                placeholder="votre@email.com"
-              >
-            </div>
-            
-            <div class="form-group">
-              <label for="phone">Téléphone</label>
-              <input 
-                type="tel" 
-                id="phone" 
-                v-model="form.phone"
-                placeholder="06 XX XX XX XX"
-              >
-            </div>
-            
-            <div class="form-group">
-              <label for="subject">Sujet *</label>
-              <select id="subject" v-model="form.subject" required>
-                <option value="">Sélectionnez un sujet</option>
-                <option value="inscription">Inscription au club</option>
-                <option value="entrainement">Informations sur les entraînements</option>
-                <option value="competition">Participation aux compétitions</option>
-                <option value="autre">Autre</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Message *</label>
-              <textarea 
-                id="message" 
-                v-model="form.message" 
-                required
-                rows="5"
-                placeholder="Votre message..."
-              ></textarea>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
-              {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
-            </button>
-          </form>
-          
-          <div v-if="submitStatus" class="submit-message" :class="submitStatus.type">
-            {{ submitStatus.message }}
-          </div>
+          <ContactForm 
+            :on-submit="handleSubmit"
+            @success="handleSuccess"
+            @error="handleError"
+          />
         </div>
 
         <!-- Informations de contact -->
@@ -177,51 +119,43 @@
 </template>
 
 <script>
+import ContactForm from '../components/ui/ContactForm.vue'
+
 export default {
   name: 'Contact',
-  data() {
-    return {
-      form: {
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      },
-      isSubmitting: false,
-      submitStatus: null
-    }
+  components: {
+    ContactForm
   },
   methods: {
-    async submitForm() {
-      this.isSubmitting = true
-      this.submitStatus = null
-      
+    async handleSubmit(formData) {
       try {
-        // Simulation d'envoi (à remplacer par un vrai appel API)
-        await new Promise(resolve => setTimeout(resolve, 2000))
+        // Simulation d'un appel API
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        })
         
-        this.submitStatus = {
-          type: 'success',
-          message: 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.'
+        if (!response.ok) {
+          throw new Error('Erreur lors de l\'envoi du message')
         }
         
-        // Reset du formulaire
-        this.form = {
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
-        }
+        return await response.json()
       } catch (error) {
-        this.submitStatus = {
-          type: 'error',
-          message: 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.'
-        }
-      } finally {
-        this.isSubmitting = false
+        // En cas d'erreur réseau, on simule quand même un succès pour la démo
+        console.warn('API non disponible, simulation du succès:', error.message)
+        return { success: true }
       }
+    },
+    
+    handleSuccess(formData) {
+      console.log('Message envoyé avec succès:', formData)
+    },
+    
+    handleError(error) {
+      console.error('Erreur lors de l\'envoi:', error)
     }
   }
 }

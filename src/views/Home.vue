@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="hero">
-      <h1>CPBO - Course à Pied Beauvais Oise</h1>
-      <p>Rejoignez notre club de course à pied à Beauvais ! Entraînements, compétitions et convivialité vous attendent.</p>
-      <router-link to="/contact" class="btn">Nous rejoindre</router-link>
-    </section>
+    <Hero 
+      title="CPBO - Course à Pied Beauvais Oise"
+      subtitle="Rejoignez notre club de course à pied à Beauvais ! Entraînements, compétitions et convivialité vous attendent."
+      :primary-button="{ text: 'Nous rejoindre', action: 'contact' }"
+      @button-click="handleHeroButtonClick"
+    />
 
     <div class="container">
       <!-- À propos rapide -->
@@ -38,39 +39,32 @@
       <section>
         <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Prochains événements</h2>
         <div class="grid">
-          <div class="event-card">
-            <div class="event-date">
-              <div>15</div>
-              <div>OCT</div>
-            </div>
-            <div class="event-content">
-              <h3 class="event-title">Entraînement découverte</h3>
-              <p class="event-location">📍 Stade de Beauvais</p>
-              <p>Venez découvrir notre club lors d'une séance d'essai gratuite !</p>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-date">
-              <div>22</div>
-              <div>OCT</div>
-            </div>
-            <div class="event-content">
-              <h3 class="event-title">Course de Beauvais</h3>
-              <p class="event-location">📍 Centre-ville de Beauvais</p>
-              <p>Course populaire 5km et 10km ouverte à tous.</p>
-            </div>
-          </div>
-          <div class="event-card">
-            <div class="event-date">
-              <div>05</div>
-              <div>NOV</div>
-            </div>
-            <div class="event-content">
-              <h3 class="event-title">Semi-marathon de l'Oise</h3>
-              <p class="event-location">📍 Compiègne</p>
-              <p>Participation du club au semi-marathon régional.</p>
-            </div>
-          </div>
+          <EventCard
+            title="Entraînement découverte"
+            description="Venez découvrir notre club lors d'une séance d'essai gratuite !"
+            location="Stade de Beauvais"
+            time="18h30"
+            date="2024-10-15"
+            :tags="['Débutant', 'Gratuit']"
+          />
+          <EventCard
+            title="Course de Beauvais"
+            description="Course populaire 5km et 10km ouverte à tous."
+            location="Centre-ville de Beauvais"
+            time="9h00"
+            date="2024-10-22"
+            price="15€"
+            :tags="['Compétition', '5km', '10km']"
+          />
+          <EventCard
+            title="Semi-marathon de l'Oise"
+            description="Participation du club au semi-marathon régional."
+            location="Compiègne"
+            time="9h00"
+            date="2024-11-05"
+            price="25€"
+            :tags="['Compétition', 'Semi-marathon']"
+          />
         </div>
         <div style="text-align: center; margin-top: 2rem;">
           <router-link to="/events" class="btn">Voir tous les événements</router-link>
@@ -96,11 +90,38 @@
         </div>
       </section>
     </div>
+    
+    <!-- Modal de contact -->
+    <ContactModal 
+      :is-open="showContactModal"
+      @close="showContactModal = false"
+    />
   </div>
 </template>
 
 <script>
+import Hero from '../components/sections/Hero.vue'
+import EventCard from '../components/sections/EventCard.vue'
+import ContactModal from '../components/sections/ContactModal.vue'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Hero,
+    EventCard,
+    ContactModal
+  },
+  data() {
+    return {
+      showContactModal: false
+    }
+  },
+  methods: {
+    handleHeroButtonClick(button) {
+      if (button.action === 'contact') {
+        this.showContactModal = true
+      }
+    }
+  }
 }
 </script>
