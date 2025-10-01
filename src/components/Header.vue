@@ -2,7 +2,8 @@
   <header class="header">
     <div class="header-content">
       <router-link to="/" class="logo">
-        🏃‍♂️ CPBO
+        <img src="/images/logo-cpbo.svg" alt="Logo CPBO" class="logo-image" />
+        <span>CPBO</span>
       </router-link>
       <Navigation />
     </div>

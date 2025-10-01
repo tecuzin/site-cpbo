@@ -14,25 +14,29 @@ body {
 
 /* Variables CSS */
 :root {
-  --primary-color: #2c5aa0;
-  --secondary-color: #f39c12;
-  --accent-color: #e74c3c;
-  --text-color: #333;
-  --light-bg: #f8f9fa;
+  --primary-color: #1e40af; /* Bleu CPBO */
+  --secondary-color: #ec4899; /* Rose CPBO */
+  --accent-color: #f59e0b; /* Orange pour les accents */
+  --text-color: #1f2937;
+  --light-bg: #f8fafc;
   --white: #ffffff;
-  --shadow: 0 2px 10px rgba(0,0,0,0.1);
-  --border-radius: 8px;
+  --shadow: 0 4px 20px rgba(30, 64, 175, 0.1);
+  --border-radius: 12px;
+  --gradient-primary: linear-gradient(135deg, #1e40af, #3b82f6);
+  --gradient-secondary: linear-gradient(135deg, #ec4899, #f472b6);
+  --gradient-hero: linear-gradient(135deg, rgba(30, 64, 175, 0.9), rgba(236, 72, 153, 0.8));
 }
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
+  background: var(--gradient-primary);
   color: var(--white);
   padding: 1rem 0;
   box-shadow: var(--shadow);
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(10px);
 }
 
 .header-content {
@@ -49,10 +53,26 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .logo:hover {
   color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+  transform: rotate(360deg);
 }
 
 .nav {
@@ -82,28 +102,55 @@ body {
 
 /* Hero section */
 .hero {
-  background: linear-gradient(rgba(44, 90, 160, 0.8), rgba(44, 90, 160, 0.8)), 
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f8f9fa" width="1200" height="600"/><circle fill="%23e9ecef" cx="200" cy="150" r="80"/><circle fill="%23dee2e6" cx="800" cy="300" r="120"/><circle fill="%23e9ecef" cx="1000" cy="100" r="60"/></svg>');
+  background: var(--gradient-hero), 
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="running" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23running)"/><circle fill="rgba(255,255,255,0.05)" cx="200" cy="150" r="80"/><circle fill="rgba(255,255,255,0.08)" cx="800" cy="300" r="120"/><circle fill="rgba(255,255,255,0.06)" cx="1000" cy="100" r="60"/></svg>');
   background-size: cover;
   background-position: center;
   color: var(--white);
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q30,10 40,20 T60,20 T80,20" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/><path d="M10,40 Q20,30 30,40 T50,40 T70,40" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" fill="none"/></svg>') repeat;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-10px) translateX(5px); }
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(45deg, #ffffff, #f8fafc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 2;
+  opacity: 0.95;
 }
 
 .btn {
@@ -120,9 +167,9 @@ body {
 }
 
 .btn:hover {
-  background: #e67e22;
+  background: #db2777;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
 }
 
 .btn-primary {
@@ -131,6 +178,7 @@ body {
 
 .btn-primary:hover {
   background: #1e3a8a;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
 }
 
 /* Cards */
@@ -140,11 +188,14 @@ body {
   padding: 2rem;
   box-shadow: var(--shadow);
   margin-bottom: 2rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(30, 64, 175, 0.1);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+  border-color: rgba(236, 72, 153, 0.2);
 }
 
 .card h3 {
@@ -193,6 +244,68 @@ body {
   color: var(--secondary-color);
 }
 
+/* Activity Cards */
+.activity-card {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-secondary);
+}
+
+.activity-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.activity-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  position: relative;
+  text-align: center;
+}
+
+.testimonial-quote {
+  font-size: 4rem;
+  color: var(--secondary-color);
+  line-height: 1;
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.testimonial-role {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header-content {
@@ -207,11 +320,11 @@ body {
   }
   
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   
   .hero p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .container {
@@ -220,6 +333,10 @@ body {
   
   .grid {
     grid-template-columns: 1fr;
+  }
+  
+  .activity-icon {
+    font-size: 2.5rem;
   }
 }
 

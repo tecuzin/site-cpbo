@@ -20,16 +20,19 @@
       <section>
         <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Nos activités</h2>
         <div class="grid">
-          <div class="card">
-            <h3>🏃‍♂️ Entraînements</h3>
+          <div class="card activity-card">
+            <div class="activity-icon">🏃‍♂️</div>
+            <h3>Entraînements</h3>
             <p>Entraînements réguliers adaptés à tous les niveaux : débutants, intermédiaires et confirmés. Séances en groupe pour progresser ensemble.</p>
           </div>
-          <div class="card">
-            <h3>🏆 Compétitions</h3>
+          <div class="card activity-card">
+            <div class="activity-icon">🏆</div>
+            <h3>Compétitions</h3>
             <p>Participation aux courses locales et régionales. Accompagnement pour vos objectifs personnels et collectifs.</p>
           </div>
-          <div class="card">
-            <h3>🎯 Objectifs</h3>
+          <div class="card activity-card">
+            <div class="activity-icon">🎯</div>
+            <h3>Objectifs</h3>
             <p>5km, 10km, semi-marathon, marathon... Nous vous aidons à atteindre vos objectifs avec un suivi personnalisé.</p>
           </div>
         </div>
@@ -75,17 +78,29 @@
       <section>
         <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Témoignages</h2>
         <div class="grid">
-          <div class="card">
+          <div class="card testimonial-card">
+            <div class="testimonial-quote">"</div>
             <p>"J'ai rejoint le CPBO il y a 2 ans en tant que débutante. L'ambiance est fantastique et j'ai progressé énormément !"</p>
-            <strong>- Marie, 35 ans</strong>
+            <div class="testimonial-author">
+              <strong>Marie, 35 ans</strong>
+              <span class="testimonial-role">Membre depuis 2022</span>
+            </div>
           </div>
-          <div class="card">
-            <p>"Un club qui allie performance et convivialité. Les entraîneurs sont à l'écoute et les sorties sont toujours un plaisir."</p>
-            <strong>- Pierre, 42 ans</strong>
+          <div class="card testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <p>"Un club qui allie performance et convivialité. Les membres du bureau sont à l'écoute et les sorties sont toujours un plaisir."</p>
+            <div class="testimonial-author">
+              <strong>Pierre, 42 ans</strong>
+              <span class="testimonial-role">Membre depuis 2021</span>
+            </div>
           </div>
-          <div class="card">
+          <div class="card testimonial-card">
+            <div class="testimonial-quote">"</div>
             <p>"Grâce au CPBO, j'ai couru mon premier marathon ! L'entraide entre membres est incroyable."</p>
-            <strong>- Sophie, 28 ans</strong>
+            <div class="testimonial-author">
+              <strong>Sophie, 28 ans</strong>
+              <span class="testimonial-role">Membre depuis 2023</span>
+            </div>
           </div>
         </div>
       </section>

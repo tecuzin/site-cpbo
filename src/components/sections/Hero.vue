@@ -68,28 +68,39 @@ export default {
 
 <style scoped>
 .hero {
-  background: linear-gradient(rgba(44, 90, 160, 0.8), rgba(44, 90, 160, 0.8)), 
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f8f9fa" width="1200" height="600"/><circle fill="%23e9ecef" cx="200" cy="150" r="80"/><circle fill="%23dee2e6" cx="800" cy="300" r="120"/><circle fill="%23e9ecef" cx="1000" cy="100" r="60"/></svg>');
+  background: var(--gradient-hero), 
+              url('/images/running-hero.jpg');
   background-size: cover;
   background-position: center;
   color: var(--white);
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(45deg, #ffffff, #f8fafc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 2;
+  opacity: 0.95;
 }
 
 .hero-actions {
@@ -97,6 +108,8 @@ export default {
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {
