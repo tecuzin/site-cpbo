@@ -1,0 +1,396 @@
+{
+  "home": {
+    "hero": {
+      "title": "CPBO - Course à Pied Beauvais Oise",
+      "subtitle": "Rejoignez notre club de course à pied à Beauvais ! Entraînements, compétitions et convivialité vous attendent.",
+      "primaryButton": {
+        "text": "Nous rejoindre",
+        "action": "contact"
+      }
+    },
+    "welcome": {
+      "title": "Bienvenue au CPBO",
+      "description": "Le Club de Course à Pied de Beauvais Oise (CPBO) est une association sportive qui rassemble des coureurs de tous niveaux. Que vous soyez débutant ou expérimenté, nous vous accueillons dans une ambiance conviviale et bienveillante.",
+      "buttonText": "En savoir plus"
+    },
+    "activities": {
+      "title": "Nos activités",
+      "cards": [
+        {
+          "icon": "🏃‍♂️",
+          "title": "Entraînements",
+          "description": "Entraînements réguliers adaptés à tous les niveaux : débutants, intermédiaires et confirmés. Séances en groupe pour progresser ensemble."
+        },
+        {
+          "icon": "🏆",
+          "title": "Compétitions",
+          "description": "Participation aux courses locales et régionales. Accompagnement pour vos objectifs personnels et collectifs."
+        },
+        {
+          "icon": "🎯",
+          "title": "Objectifs",
+          "description": "5km, 10km, semi-marathon, marathon... Nous vous aidons à atteindre vos objectifs avec un suivi personnalisé."
+        }
+      ]
+    },
+    "events": {
+      "title": "Prochains événements",
+      "cards": [
+        {
+          "title": "Entraînement découverte",
+          "description": "Venez découvrir notre club lors d'une séance d'essai gratuite !",
+          "location": "Stade de Beauvais",
+          "time": "18h30",
+          "date": "2024-10-15",
+          "tags": ["Débutant", "Gratuit"]
+        },
+        {
+          "title": "Course de Beauvais",
+          "description": "Course populaire 5km et 10km ouverte à tous.",
+          "location": "Centre-ville de Beauvais",
+          "time": "9h00",
+          "date": "2024-10-22",
+          "price": "15€",
+          "tags": ["Compétition", "5km", "10km"]
+        },
+        {
+          "title": "Semi-marathon de l'Oise",
+          "description": "Participation du club au semi-marathon régional.",
+          "location": "Compiègne",
+          "time": "9h00",
+          "date": "2024-11-05",
+          "price": "25€",
+          "tags": ["Compétition", "Semi-marathon"]
+        }
+      ],
+      "buttonText": "Voir tous les événements"
+    },
+    "testimonials": {
+      "title": "Témoignages",
+      "cards": [
+        {
+          "quote": "J'ai rejoint le CPBO il y a 2 ans en tant que débutante. L'ambiance est fantastique et j'ai progressé énormément !",
+          "author": "Marie, 35 ans",
+          "role": "Membre depuis 2022"
+        },
+        {
+          "quote": "Un club qui allie performance et convivialité. Les membres du bureau sont à l'écoute et les sorties sont toujours un plaisir.",
+          "author": "Pierre, 42 ans",
+          "role": "Membre depuis 2021"
+        },
+        {
+          "quote": "Grâce au CPBO, j'ai couru mon premier marathon ! L'entraide entre membres est incroyable.",
+          "author": "Sophie, 28 ans",
+          "role": "Membre depuis 2023"
+        }
+      ]
+    }
+  },
+  "about": {
+    "history": {
+      "title": "Notre histoire",
+      "description": "Le Club de Course à Pied de Beauvais Oise (CPBO) a été créé en 2010 par un groupe de passionnés de course à pied souhaitant partager leur passion dans une ambiance conviviale. Depuis, notre club n'a cessé de grandir et compte aujourd'hui plus de 150 membres de tous âges et de tous niveaux.",
+      "additionalInfo": "Basé à Beauvais, nous organisons des entraînements réguliers et participons activement à la vie sportive de la région des Hauts-de-France."
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "cards": [
+        {
+          "icon": "🤝",
+          "title": "Convivialité",
+          "description": "Un esprit d'équipe et d'entraide qui fait la force de notre club."
+        },
+        {
+          "icon": "📈",
+          "title": "Progression",
+          "description": "Accompagnement personnalisé pour atteindre vos objectifs."
+        },
+        {
+          "icon": "🏃‍♂️",
+          "title": "Passion",
+          "description": "Partage de notre passion pour la course à pied."
+        },
+        {
+          "icon": "🌱",
+          "title": "Accessibilité",
+          "description": "Ouvert à tous, quel que soit votre niveau."
+        }
+      ]
+    },
+    "bureau": {
+      "title": "Notre bureau",
+      "members": [
+        {
+          "name": "Jean Dupont",
+          "role": "Président",
+          "description": "Coureur expérimenté, 15 ans d'expérience. Responsable de la gestion du club et des relations extérieures."
+        },
+        {
+          "name": "Marie Martin",
+          "role": "Secrétaire",
+          "description": "Ancienne athlète de haut niveau, gère l'administration et l'accueil des nouveaux membres."
+        },
+        {
+          "name": "Pierre Durand",
+          "role": "Trésorier",
+          "description": "Spécialiste du trail et de la course nature. Gère les finances et organise les sorties en forêt."
+        }
+      ]
+    },
+    "facilities": {
+      "title": "Nos installations",
+      "cards": [
+        {
+          "icon": "🏟️",
+          "title": "Stade de Beauvais",
+          "description": "Notre base d'entraînement principale avec piste d'athlétisme et vestiaires."
+        },
+        {
+          "icon": "🌲",
+          "title": "Parc Marcel Dassault",
+          "description": "Parcours nature pour les entraînements en extérieur et les sorties longues."
+        },
+        {
+          "icon": "🏃‍♀️",
+          "title": "Centre-ville",
+          "description": "Parcours urbains variés pour découvrir Beauvais en courant."
+        }
+      ]
+    },
+    "statistics": {
+      "title": "Statistiques du club",
+      "stats": [
+        {
+          "value": "150+",
+          "label": "Membres actifs"
+        },
+        {
+          "value": "3",
+          "label": "Entraînements par semaine"
+        },
+        {
+          "value": "15+",
+          "label": "Compétitions par an"
+        },
+        {
+          "value": "14",
+          "label": "Années d'existence"
+        }
+      ]
+    },
+    "join": {
+      "title": "Rejoindre le CPBO",
+      "description": "Vous souhaitez nous rejoindre ? C'est simple !",
+      "steps": [
+        "Participez à une séance d'essai gratuite",
+        "Remplissez le formulaire d'inscription",
+        "Payez la cotisation annuelle (30€)",
+        "Commencez à courir avec nous !"
+      ],
+      "buttonText": "Nous contacter"
+    }
+  },
+  "events": {
+    "calendar": {
+      "title": "Calendrier des événements 2024",
+      "description": "Découvrez tous nos événements, entraînements et compétitions pour cette année."
+    },
+    "regularTrainings": {
+      "title": "Entraînements réguliers",
+      "cards": [
+        {
+          "icon": "🏃‍♂️",
+          "title": "Mardi - Entraînement débutants",
+          "schedule": "18h30 - 19h30",
+          "location": "Stade de Beauvais",
+          "level": "Débutants et intermédiaires",
+          "description": "Entraînement adapté aux coureurs débutants avec échauffement, exercices techniques et course en groupe."
+        },
+        {
+          "icon": "🏃‍♀️",
+          "title": "Jeudi - Entraînement confirmés",
+          "schedule": "18h30 - 20h00",
+          "location": "Stade de Beauvais",
+          "level": "Confirmés",
+          "description": "Entraînement intensif avec fractionnés, côtes et travail de vitesse pour les coureurs expérimentés."
+        },
+        {
+          "icon": "🌲",
+          "title": "Dimanche - Sortie longue",
+          "schedule": "9h00 - 11h00",
+          "location": "Parc Marcel Dassault",
+          "level": "Tous niveaux",
+          "description": "Sortie longue en nature pour préparer les compétitions et découvrir les environs de Beauvais."
+        }
+      ]
+    },
+    "competitions": {
+      "title": "Compétitions 2024",
+      "cards": [
+        {
+          "date": "15 OCT",
+          "title": "Course de Beauvais",
+          "location": "Centre-ville de Beauvais",
+          "distances": "5km, 10km",
+          "price": "15€",
+          "description": "Course populaire dans les rues de Beauvais avec départ et arrivée place de la mairie."
+        },
+        {
+          "date": "05 NOV",
+          "title": "Semi-marathon de l'Oise",
+          "location": "Compiègne",
+          "distances": "21,1km",
+          "price": "25€",
+          "description": "Compétition régionale sur un parcours vallonné à travers la forêt de Compiègne."
+        },
+        {
+          "date": "17 NOV",
+          "title": "Trail de l'Aisne",
+          "location": "Laon",
+          "distances": "15km, 30km",
+          "price": "20€ / 30€",
+          "description": "Trail nature avec dénivelé positif et passages techniques."
+        },
+        {
+          "date": "08 DÉC",
+          "title": "Cross de Noël",
+          "location": "Parc Marcel Dassault",
+          "distances": "5km",
+          "price": "10€",
+          "description": "Course festive avec remise de prix et goûter de Noël après la course."
+        }
+      ]
+    },
+    "specialEvents": {
+      "title": "Événements spéciaux",
+      "cards": [
+        {
+          "icon": "🎉",
+          "title": "Fête du club",
+          "date": "15 décembre 2024",
+          "location": "Salle des fêtes de Beauvais",
+          "description": "Réunion annuelle avec remise des prix, projection des photos de l'année et repas convivial."
+        },
+        {
+          "icon": "🏃‍♂️",
+          "title": "Stage d'été",
+          "date": "20-22 juillet 2024",
+          "location": "Station de sports d'hiver (été)",
+          "description": "Stage de 3 jours avec entraînements en altitude, cours théoriques et activités de groupe."
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Course familiale",
+          "date": "2 juin 2024",
+          "location": "Parc Marcel Dassault",
+          "description": "Course ouverte aux familles avec distances adaptées aux enfants (1km, 3km, 5km)."
+        }
+      ]
+    },
+    "results": {
+      "title": "Résultats récents",
+      "cards": [
+        {
+          "icon": "🏆",
+          "title": "Marathon de Paris 2024",
+          "bestTime": "3h15 (Pierre Durand)",
+          "participants": "12 coureurs du club",
+          "average": "3h45"
+        },
+        {
+          "icon": "🥇",
+          "title": "Semi-marathon de Lille",
+          "bestTime": "1ère place : Marie Martin (1h28)",
+          "participants": "8 coureurs du club",
+          "average": "Podium : 3 coureurs du CPBO"
+        },
+        {
+          "icon": "🏃‍♂️",
+          "title": "10km de Beauvais",
+          "bestTime": "Vainqueur : Jean Dupont (35min)",
+          "participants": "25 coureurs du club",
+          "average": "Classement : 1ère équipe"
+        }
+      ]
+    },
+    "participation": {
+      "title": "Participez à nos événements !",
+      "description": "Que vous soyez débutant ou expérimenté, il y a toujours un événement pour vous au CPBO.",
+      "buttonText": "Nous contacter"
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "Nous écrire"
+    },
+    "info": {
+      "title": "Informations de contact",
+      "address": {
+        "title": "📍 Adresse",
+        "content": "CPBO - Course à Pied Beauvais Oise<br>Stade de Beauvais<br>60000 Beauvais<br>France"
+      },
+      "phone": {
+        "title": "📞 Téléphone",
+        "number": "06 XX XX XX XX",
+        "schedule": "Disponible du lundi au vendredi de 18h à 20h"
+      },
+      "email": {
+        "title": "📧 Email",
+        "addresses": ["contact@cpbo.fr", "president@cpbo.fr"]
+      },
+      "hours": {
+        "title": "🕒 Horaires d'ouverture",
+        "content": "<strong>Bureau :</strong><br>Mardi : 18h30 - 20h00<br>Jeudi : 18h30 - 20h00<br>Dimanche : 9h00 - 11h00"
+      },
+      "social": {
+        "title": "🌐 Réseaux sociaux",
+        "links": [
+          { "icon": "📘", "name": "Facebook", "url": "#" },
+          { "icon": "📷", "name": "Instagram", "url": "#" },
+          { "icon": "🐦", "name": "Twitter", "url": "#" }
+        ]
+      }
+    },
+    "access": {
+      "title": "Plan d'accès",
+      "cards": [
+        {
+          "icon": "🚗",
+          "title": "En voiture",
+          "description": "Depuis Paris : A16 direction Amiens, sortie Beauvais Centre<br>Depuis Amiens : A16 direction Paris, sortie Beauvais Centre<br>Parking gratuit disponible au stade"
+        },
+        {
+          "icon": "🚌",
+          "title": "En transport en commun",
+          "description": "Bus ligne 1 : Arrêt \"Stade\"<br>Bus ligne 3 : Arrêt \"Parc Marcel Dassault\"<br>Gare SNCF : 15 minutes à pied"
+        },
+        {
+          "icon": "🚴‍♂️",
+          "title": "À vélo",
+          "description": "Piste cyclable depuis le centre-ville<br>Arceaux vélos disponibles au stade<br>Parcours sécurisé"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Comment s'inscrire au club ?",
+          "answer": "Il suffit de participer à une séance d'essai gratuite, puis de remplir le formulaire d'inscription. La cotisation annuelle est de 30€."
+        },
+        {
+          "question": "Quel niveau faut-il avoir ?",
+          "answer": "Aucun niveau minimum n'est requis ! Nous accueillons les débutants comme les coureurs expérimentés. Chacun progresse à son rythme."
+        },
+        {
+          "question": "Quel équipement faut-il ?",
+          "answer": "Une paire de chaussures de course adaptée suffit pour commencer. Nous vous conseillerons sur l'équipement selon vos objectifs."
+        },
+        {
+          "question": "Y a-t-il des entraînements pour les enfants ?",
+          "answer": "Oui, nous organisons des séances spéciales pour les jeunes de 8 à 16 ans le mercredi après-midi."
+        }
+      ]
+    }
+  }
+}

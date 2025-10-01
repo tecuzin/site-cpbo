@@ -6,7 +6,7 @@
       <div class="grid">
         <!-- Formulaire de contact -->
         <div class="card">
-          <h2>Nous écrire</h2>
+          <h2>{{ cards.form.title }}</h2>
           <ContactForm 
             :on-submit="handleSubmit"
             @success="handleSuccess"
@@ -16,46 +16,35 @@
 
         <!-- Informations de contact -->
         <div class="card">
-          <h2>Informations de contact</h2>
+          <h2>{{ cards.info.title }}</h2>
           
           <div style="margin-bottom: 2rem;">
-            <h3>📍 Adresse</h3>
-            <p>
-              CPBO - Course à Pied Beauvais Oise<br>
-              Stade de Beauvais<br>
-              60000 Beauvais<br>
-              France
-            </p>
+            <h3>{{ cards.info.address.title }}</h3>
+            <p v-html="cards.info.address.content"></p>
           </div>
           
           <div style="margin-bottom: 2rem;">
-            <h3>📞 Téléphone</h3>
-            <p>06 XX XX XX XX</p>
-            <p><small>Disponible du lundi au vendredi de 18h à 20h</small></p>
+            <h3>{{ cards.info.phone.title }}</h3>
+            <p>{{ cards.info.phone.number }}</p>
+            <p><small>{{ cards.info.phone.schedule }}</small></p>
           </div>
           
           <div style="margin-bottom: 2rem;">
-            <h3>📧 Email</h3>
-            <p>contact@cpbo.fr</p>
-            <p>president@cpbo.fr</p>
+            <h3>{{ cards.info.email.title }}</h3>
+            <p v-for="email in cards.info.email.addresses" :key="email">{{ email }}</p>
           </div>
           
           <div style="margin-bottom: 2rem;">
-            <h3>🕒 Horaires d'ouverture</h3>
-            <p>
-              <strong>Bureau :</strong><br>
-              Mardi : 18h30 - 20h00<br>
-              Jeudi : 18h30 - 20h00<br>
-              Dimanche : 9h00 - 11h00
-            </p>
+            <h3>{{ cards.info.hours.title }}</h3>
+            <p v-html="cards.info.hours.content"></p>
           </div>
           
           <div>
-            <h3>🌐 Réseaux sociaux</h3>
+            <h3>{{ cards.info.social.title }}</h3>
             <p>
-              📘 <a href="#" target="_blank">Facebook</a><br>
-              📷 <a href="#" target="_blank">Instagram</a><br>
-              🐦 <a href="#" target="_blank">Twitter</a>
+              <span v-for="link in cards.info.social.links" :key="link.name">
+                {{ link.icon }} <a :href="link.url" target="_blank">{{ link.name }}</a><br>
+              </span>
             </p>
           </div>
         </div>
@@ -63,54 +52,22 @@
 
       <!-- Plan d'accès -->
       <section class="card">
-        <h2>Plan d'accès</h2>
+        <h2>{{ cards.access.title }}</h2>
         <div class="grid">
-          <div>
-            <h3>🚗 En voiture</h3>
-            <p>
-              Depuis Paris : A16 direction Amiens, sortie Beauvais Centre<br>
-              Depuis Amiens : A16 direction Paris, sortie Beauvais Centre<br>
-              Parking gratuit disponible au stade
-            </p>
-          </div>
-          <div>
-            <h3>🚌 En transport en commun</h3>
-            <p>
-              Bus ligne 1 : Arrêt "Stade"<br>
-              Bus ligne 3 : Arrêt "Parc Marcel Dassault"<br>
-              Gare SNCF : 15 minutes à pied
-            </p>
-          </div>
-          <div>
-            <h3>🚴‍♂️ À vélo</h3>
-            <p>
-              Piste cyclable depuis le centre-ville<br>
-              Arceaux vélos disponibles au stade<br>
-              Parcours sécurisé
-            </p>
+          <div v-for="access in cards.access.cards" :key="access.title">
+            <h3>{{ access.icon }} {{ access.title }}</h3>
+            <p v-html="access.description"></p>
           </div>
         </div>
       </section>
 
       <!-- FAQ -->
       <section class="card">
-        <h2>Questions fréquentes</h2>
+        <h2>{{ cards.faq.title }}</h2>
         <div class="faq">
-          <div class="faq-item">
-            <h3>Comment s'inscrire au club ?</h3>
-            <p>Il suffit de participer à une séance d'essai gratuite, puis de remplir le formulaire d'inscription. La cotisation annuelle est de 30€.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Quel niveau faut-il avoir ?</h3>
-            <p>Aucun niveau minimum n'est requis ! Nous accueillons les débutants comme les coureurs expérimentés. Chacun progresse à son rythme.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Quel équipement faut-il ?</h3>
-            <p>Une paire de chaussures de course adaptée suffit pour commencer. Nous vous conseillerons sur l'équipement selon vos objectifs.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Y a-t-il des entraînements pour les enfants ?</h3>
-            <p>Oui, nous organisons des séances spéciales pour les jeunes de 8 à 16 ans le mercredi après-midi.</p>
+          <div v-for="item in cards.faq.items" :key="item.question" class="faq-item">
+            <h3>{{ item.question }}</h3>
+            <p>{{ item.answer }}</p>
           </div>
         </div>
       </section>
@@ -120,11 +77,18 @@
 
 <script>
 import ContactForm from '../components/ui/ContactForm.vue'
+import cardsData from '../data/cards.json'
 
 export default {
   name: 'Contact',
   components: {
     ContactForm
+  },
+  setup() {
+    const cards = cardsData.contact
+    return {
+      cards
+    }
   },
   methods: {
     async handleSubmit(formData) {

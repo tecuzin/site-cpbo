@@ -4,105 +4,60 @@
       <h1>À propos du CPBO</h1>
       
       <section class="card">
-        <h2>Notre histoire</h2>
-        <p>Le Club de Course à Pied de Beauvais Oise (CPBO) a été créé en 2010 par un groupe de passionnés de course à pied souhaitant partager leur passion dans une ambiance conviviale. Depuis, notre club n'a cessé de grandir et compte aujourd'hui plus de 150 membres de tous âges et de tous niveaux.</p>
-        <p>Basé à Beauvais, nous organisons des entraînements réguliers et participons activement à la vie sportive de la région des Hauts-de-France.</p>
+        <h2>{{ cards.history.title }}</h2>
+        <p>{{ cards.history.description }}</p>
+        <p>{{ cards.history.additionalInfo }}</p>
       </section>
 
       <section class="card">
-        <h2>Nos valeurs</h2>
+        <h2>{{ cards.values.title }}</h2>
         <div class="grid">
-          <div>
-            <h3>🤝 Convivialité</h3>
-            <p>Un esprit d'équipe et d'entraide qui fait la force de notre club.</p>
-          </div>
-          <div>
-            <h3>📈 Progression</h3>
-            <p>Accompagnement personnalisé pour atteindre vos objectifs.</p>
-          </div>
-          <div>
-            <h3>🏃‍♂️ Passion</h3>
-            <p>Partage de notre passion pour la course à pied.</p>
-          </div>
-          <div>
-            <h3>🌱 Accessibilité</h3>
-            <p>Ouvert à tous, quel que soit votre niveau.</p>
+          <div v-for="value in cards.values.cards" :key="value.title">
+            <h3>{{ value.icon }} {{ value.title }}</h3>
+            <p>{{ value.description }}</p>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Notre bureau</h2>
+        <h2>{{ cards.bureau.title }}</h2>
         <div class="grid">
-          <div>
-            <h3>Jean Dupont</h3>
-            <p><strong>Président</strong></p>
-            <p>Coureur expérimenté, 15 ans d'expérience. Responsable de la gestion du club et des relations extérieures.</p>
-          </div>
-          <div>
-            <h3>Marie Martin</h3>
-            <p><strong>Secrétaire</strong></p>
-            <p>Ancienne athlète de haut niveau, gère l'administration et l'accueil des nouveaux membres.</p>
-          </div>
-          <div>
-            <h3>Pierre Durand</h3>
-            <p><strong>Trésorier</strong></p>
-            <p>Spécialiste du trail et de la course nature. Gère les finances et organise les sorties en forêt.</p>
+          <div v-for="member in cards.bureau.members" :key="member.name">
+            <h3>{{ member.name }}</h3>
+            <p><strong>{{ member.role }}</strong></p>
+            <p>{{ member.description }}</p>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Nos installations</h2>
+        <h2>{{ cards.facilities.title }}</h2>
         <div class="grid">
-          <div>
-            <h3>🏟️ Stade de Beauvais</h3>
-            <p>Notre base d'entraînement principale avec piste d'athlétisme et vestiaires.</p>
-          </div>
-          <div>
-            <h3>🌲 Parc Marcel Dassault</h3>
-            <p>Parcours nature pour les entraînements en extérieur et les sorties longues.</p>
-          </div>
-          <div>
-            <h3>🏃‍♀️ Centre-ville</h3>
-            <p>Parcours urbains variés pour découvrir Beauvais en courant.</p>
+          <div v-for="facility in cards.facilities.cards" :key="facility.title">
+            <h3>{{ facility.icon }} {{ facility.title }}</h3>
+            <p>{{ facility.description }}</p>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Statistiques du club</h2>
+        <h2>{{ cards.statistics.title }}</h2>
         <div class="grid">
-          <div style="text-align: center;">
-            <h3 style="color: var(--primary-color); font-size: 2rem;">150+</h3>
-            <p>Membres actifs</p>
-          </div>
-          <div style="text-align: center;">
-            <h3 style="color: var(--primary-color); font-size: 2rem;">3</h3>
-            <p>Entraînements par semaine</p>
-          </div>
-          <div style="text-align: center;">
-            <h3 style="color: var(--primary-color); font-size: 2rem;">15+</h3>
-            <p>Compétitions par an</p>
-          </div>
-          <div style="text-align: center;">
-            <h3 style="color: var(--primary-color); font-size: 2rem;">14</h3>
-            <p>Années d'existence</p>
+          <div v-for="stat in cards.statistics.stats" :key="stat.label" style="text-align: center;">
+            <h3 style="color: var(--primary-color); font-size: 2rem;">{{ stat.value }}</h3>
+            <p>{{ stat.label }}</p>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Rejoindre le CPBO</h2>
-        <p>Vous souhaitez nous rejoindre ? C'est simple !</p>
+        <h2>{{ cards.join.title }}</h2>
+        <p>{{ cards.join.description }}</p>
         <ol style="margin: 1rem 0; padding-left: 2rem;">
-          <li>Participez à une séance d'essai gratuite</li>
-          <li>Remplissez le formulaire d'inscription</li>
-          <li>Payez la cotisation annuelle (30€)</li>
-          <li>Commencez à courir avec nous !</li>
+          <li v-for="step in cards.join.steps" :key="step">{{ step }}</li>
         </ol>
         <div style="text-align: center; margin-top: 2rem;">
-          <router-link to="/contact" class="btn btn-primary">Nous contacter</router-link>
+          <router-link to="/contact" class="btn btn-primary">{{ cards.join.buttonText }}</router-link>
         </div>
       </section>
     </div>
@@ -110,7 +65,15 @@
 </template>
 
 <script>
+import cardsData from '../data/cards.json'
+
 export default {
-  name: 'About'
+  name: 'About',
+  setup() {
+    const cards = cardsData.about
+    return {
+      cards
+    }
+  }
 }
 </script>
