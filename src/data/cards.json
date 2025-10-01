@@ -138,22 +138,22 @@
       ]
     },
     "facilities": {
-      "title": "Nos installations",
+      "title": "Nos lieux de rendez-vous",
       "cards": [
         {
           "icon": "🏟️",
-          "title": "Stade de Beauvais",
-          "description": "Notre base d'entraînement principale avec piste d'athlétisme et vestiaires."
+          "title": "Parking de Biocoop",
+          "description": "Notre lieu de repli en hiver"
         },
         {
           "icon": "🌲",
-          "title": "Parc Marcel Dassault",
-          "description": "Parcours nature pour les entraînements en extérieur et les sorties longues."
+          "title": "Plan d'eau du Canada",
+          "description": "Notre lieu de rendez-vous en été"
         },
         {
           "icon": "🏃‍♀️",
-          "title": "Centre-ville",
-          "description": "Parcours urbains variés pour découvrir Beauvais en courant."
+          "title": "Marché de Saint-Paul",
+          "description": "Un leu où l'on délocalise certaines sorties"
         }
       ]
     },
