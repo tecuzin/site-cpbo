@@ -176,6 +176,45 @@ Le site est entièrement responsive et s'adapte à :
 - `npm run test:ui` : Lance les tests avec interface graphique
 - `npm run test:e2e` : Lance les tests end-to-end
 
+## 🚀 Déploiement sur GitHub Pages
+
+Le site est configuré pour être déployé automatiquement sur GitHub Pages via GitHub Actions.
+
+### Configuration initiale
+
+1. **Activer GitHub Pages** dans votre repository :
+   - Allez dans `Settings` > `Pages`
+   - Dans `Source`, sélectionnez `GitHub Actions`
+
+2. **Pousser votre code** :
+```bash
+git add .
+git commit -m "Configuration pour GitHub Pages"
+git push origin main
+```
+
+3. **Le déploiement se fera automatiquement** après chaque push sur la branche `main`
+
+### Comment ça marche
+
+- Le workflow `.github/workflows/deploy.yml` construit automatiquement le site
+- Le fichier `vite.config.js` configure le bon chemin de base (`/site-cpbo/`)
+- Le fichier `public/404.html` gère les redirections pour les routes SPA
+- Le fichier `public/.nojekyll` empêche Jekyll de traiter les fichiers
+
+### URL du site
+
+Après le déploiement, votre site sera accessible à :
+`https://<votre-username>.github.io/site-cpbo/`
+
+### Déploiement manuel
+
+Si vous souhaitez construire manuellement :
+```bash
+npm run build
+# Les fichiers seront dans le dossier dist/
+```
+
 ## 🏗️ Architecture des composants
 
 ### Composants UI

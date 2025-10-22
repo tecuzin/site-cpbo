@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CPBO - Course à Pied Beauvais Oise</title>
     <meta name="description" content="Club de Course à Pied de Beauvais Oise - Entraînements, compétitions et événements running" />
+    <script>
+      // Gestion de la redirection depuis 404.html pour les routes SPA
+      (function(){
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>
