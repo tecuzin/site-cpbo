@@ -12,6 +12,11 @@ body {
   background-color: #f8f9fa;
 }
 
+#logo {
+  text-decoration: none;
+  color: var(--white);
+}
+
 /* Variables CSS */
 :root {
   --primary-color: #1e40af; /* Bleu CPBO */
