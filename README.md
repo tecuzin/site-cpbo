@@ -167,6 +167,43 @@ Le site est entièrement responsive et s'adapte à :
 - **Tablette** : Adaptation des colonnes
 - **Mobile** : Navigation empilée et contenu optimisé
 
+## 🚀 Déploiement sur GitHub Pages
+
+Le site est déployé automatiquement sur GitHub Pages à l'adresse : https://tecuzin.github.io/site-cpbo/
+
+### Déploiement manuel
+
+Pour déployer une nouvelle version :
+
+```bash
+# Assurez-vous d'avoir commis tous vos changements
+git add .
+git commit -m "Votre message de commit"
+
+# Lancer le script de déploiement
+./deploy.sh
+```
+
+Le script `deploy.sh` va automatiquement :
+1. ✅ Vérifier qu'il n'y a pas de changements non commités
+2. 🔨 Construire la version de production avec `npm run build`
+3. 🔄 Basculer sur la branche `gh-pages`
+4. 🧹 Nettoyer les anciens fichiers
+5. 📦 Copier les nouveaux fichiers du dossier `dist`
+6. 💾 Commiter les changements
+7. ⬆️ Pousser vers GitHub
+8. 🔙 Revenir sur votre branche de développement
+
+**Options :**
+- `./deploy.sh` : Déploie et pousse automatiquement vers GitHub
+- `./deploy.sh --no-push` : Prépare le déploiement sans pousser (pour vérification)
+
+### Configuration GitHub Pages
+
+Le déploiement utilise la branche `gh-pages` :
+- **Source** : Deploy from a branch
+- **Branch** : gh-pages / (root)
+
 ## 🔧 Scripts disponibles
 
 - `npm run dev` : Lance le serveur de développement
@@ -175,6 +212,7 @@ Le site est entièrement responsive et s'adapte à :
 - `npm run test` : Lance les tests unitaires
 - `npm run test:ui` : Lance les tests avec interface graphique
 - `npm run test:e2e` : Lance les tests end-to-end
+- `./deploy.sh` : Déploie le site sur GitHub Pages
 
 ## 🏗️ Architecture des composants
 
